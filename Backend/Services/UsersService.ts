@@ -6,7 +6,7 @@ export class UserService {
     constructor() {}
 
     async getUsers() {
-        await prisma.$connect()
+        // await prisma.$connect()
 
         const allUsers = await prisma.user.findMany({
             include: {
@@ -35,7 +35,7 @@ export class UserService {
             throw new Error('No users found')
         }
 
-        await prisma.$disconnect()
+        // await prisma.$disconnect()
         return allUsers
     }
 }
