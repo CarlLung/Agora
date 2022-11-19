@@ -9,7 +9,9 @@ dotenv.config()
 
 const mongoDB = process.env.DATABASE_URL || ''
 
-mongoose.connect(mongoDB)
+mongoose.connect(mongoDB, {}, () => {
+    console.log('Connected to database')
+})
 
 const db = mongoose.connection
 
