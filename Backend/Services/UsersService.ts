@@ -6,7 +6,7 @@ export class UserService {
     constructor() {}
 
     async getUsers() {
-        // await prisma.$connect()
+        await prisma.$connect()
 
         const allUsers = await prisma.user.findMany({
             include: {
@@ -14,28 +14,28 @@ export class UserService {
             },
         })
 
-        if (allUsers) {
-            await prisma.user.create({
-                data: {
-                    name: 'Rich',
-                    email: 'hello@prisma.com',
-                    posts: {
-                        create: {
-                            title: 'My first post',
-                            body: 'Lots of really interesting stuff',
-                            slug: 'my-first-post',
-                        },
-                    },
-                },
-            })
-        }
-
         if (!allUsers) {
             await prisma.$disconnect()
             throw new Error('No users found')
         }
 
-        // await prisma.$disconnect()
+        await prisma.$disconnect()
         return allUsers
+    }
+
+    async createUser() {
+        return await prisma.user.create({
+            data: {
+                name: 'Rich',
+                email: 'hello@prisma.com',
+                posts: {
+                    create: {
+                        title: 'My first post',
+                        body: 'Lots of really interesting stuff',
+                        slug: 'my-first-post',
+                    },
+                },
+            },
+        })
     }
 }

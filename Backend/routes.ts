@@ -7,5 +7,7 @@ export default function (args: { userController: UserController }) {
 
     router.get('/users', args.userController.getUsers)
 
+    router.post('/users', args.userController.createUser)
+
     return router
 }

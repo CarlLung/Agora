@@ -9,4 +9,8 @@ export class UserController extends BaseController {
     getUsers = this.handleRequest(async (req, res) => {
         return await this.usersService.getUsers()
     })
+
+    createUser = this.handleRequest(async (req, res) => {
+        return await this.usersService.createUser()
+    })
 }
