@@ -1,5 +1,6 @@
 import { BaseController } from '../base-controller'
 import { UserService } from '../Services/UsersService'
+import { HttpException } from '../base-controller'
 
 export class UserController extends BaseController {
     constructor(public usersService: UserService) {
@@ -11,6 +12,12 @@ export class UserController extends BaseController {
     })
 
     createUser = this.handleRequest(async (req, res) => {
-        return await this.usersService.createUser()
+        const { email, password } = req.body
+
+        if (!email || !password) {
+            throw new HttpException(400, 'Email and password are required')
+        }
+
+        return await this.usersService.createUser({ email, password })
     })
 }
