@@ -1,12 +1,7 @@
 import express from 'express'
-import { Request, Response } from 'express'
 import routes from './routes'
 
 const app = express()
-
-app.get('/', function (req: Request, res: Response) {
-    res.end('Hello World')
-})
 
 import { UserService } from './Services/UsersService'
 import { UserController } from './Controllers/UsersController'
@@ -19,6 +14,14 @@ let router = routes({
 })
 
 app.use(router)
+
+app.get('/', (req, res) => {
+    res.send({ messaeg: 'server connnected successfully' })
+})
+
+app.use((req, res) => {
+    res.status(404).json({ error: 'Invalid request, typo on url or method?' })
+})
 
 const PORT = 8080
 
