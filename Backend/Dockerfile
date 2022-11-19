@@ -1,8 +1,14 @@
-FROM node:19-alpine3.15
+FROM node:19
 
 WORKDIR /BACKEND
 
 COPY package*.json ./
+
+COPY prisma ./prisma/
+
+COPY .env ./
+
+COPY tsconfig.json ./
 
 RUN yarn install
 
