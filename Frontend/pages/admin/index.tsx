@@ -1,7 +1,7 @@
-import { helloWorld, checkPassword } from "./checkPassword";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const Admin = () => {
-  return <div>This is Admin Page</div>;
+  return <ChakraProvider>This is Admin Page</ChakraProvider>;
 };
 
 export default Admin;
