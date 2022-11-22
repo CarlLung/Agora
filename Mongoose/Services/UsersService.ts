@@ -1,13 +1,18 @@
-import { User } from '../interface/user'
+import { User as IUser } from '../interface/user'
+import { User } from '../models/userSchema'
 
 export class UserService {
     constructor() {}
 
     async getUsers() {
-        return ['user1', 'user2']
+        return await User.find()
     }
 
-    async createUser({ email, password }: User) {
-        return 'create user'
+    async createUser({ email, password }: IUser) {
+        const result = await new User({ email, password }).save()
+        if (!result) {
+            throw new Error('Error creating user')
+        }
+        return 'user created'
     }
 }
