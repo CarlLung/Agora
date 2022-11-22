@@ -2,6 +2,11 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+type User = {
+    name: string
+    email: string
+}
+
 export class UserService {
     constructor() {}
 
@@ -23,18 +28,11 @@ export class UserService {
         return allUsers
     }
 
-    async createUser() {
+    async createUser({ name, email }: User) {
         return await prisma.user.create({
             data: {
-                name: 'Rich',
-                email: 'hello@prisma.com',
-                posts: {
-                    create: {
-                        title: 'My first post',
-                        body: 'Lots of really interesting stuff',
-                        slug: 'my-first-post',
-                    },
-                },
+                name,
+                email,
             },
         })
     }

@@ -11,6 +11,10 @@ export class UserController extends BaseController {
     })
 
     createUser = this.handleRequest(async (req, res) => {
-        return await this.usersService.createUser()
+        const { name, email } = req.body
+        if (!email || !name) {
+            throw new Error('Email and password are required')
+        }
+        return await this.usersService.createUser({ name, email })
     })
 }
