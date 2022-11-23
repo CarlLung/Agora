@@ -13,9 +13,11 @@ import {
 } from '@chakra-ui/icons';
 import NavBar from "../../components/layout/NavBar";
 
-type Post = {title: string;mainContent: string;tag: string}
 
-const createPostForm = () => {
+
+export default function createPostForm() {
+
+  type Post = {title: string;mainContent: string;tag: string}
 
   const {
     register,
@@ -35,7 +37,7 @@ const createPostForm = () => {
         <link rel="icon" href="/logo.png" />
       </Head>
       <NavBar />
-    <div className="App">
+    <div className="createPostForm">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control">
           <label>Title</label>
@@ -66,5 +68,5 @@ const createPostForm = () => {
   )
   };
   
-  export default createPostForm;
+  
 
