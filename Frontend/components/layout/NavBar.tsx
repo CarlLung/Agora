@@ -65,7 +65,7 @@ import {
                    
             <Image 
                    display={{ base: 'none', md: 'flex' }} 
-                   boxSize='40px' 
+                   boxSize='70px' 
                    src= '/logo.png'
                    alt='owlLogo'
             />
