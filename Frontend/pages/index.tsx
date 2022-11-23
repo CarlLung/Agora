@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import HomePage from "./home";
+import NavBar from "../components/layout/NavBar";
 // import Link from "next/link";
-import NavBar from "../components/layout/navBar";
 
 export default function Home() {
   return (
