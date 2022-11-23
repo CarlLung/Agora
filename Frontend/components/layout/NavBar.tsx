@@ -33,8 +33,10 @@ import {
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
-          py={{ base: 2 }}
-          px={{ base: 4 }}
+          paddingLeft="6px"
+          paddingTop="6px"
+          paddingBottom="6px"
+          paddingRight="15px"
           borderBottom={1}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.900')}
@@ -52,6 +54,14 @@ import {
               aria-label={'Toggle Navigation'}
             />
           </Flex>
+          <Image 
+                   display={{ base: 'none', md: 'flex' }} 
+                   width="135px"
+                   height="45px"
+                   src= '/logo.png'
+                   alt='owlLogo'
+            />
+
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
 
              {/*<Text
@@ -60,19 +70,8 @@ import {
               color={useColorModeValue('gray.800', 'white')}>
               Logo
             </Text> */}
-
-            
-                   
-            <Image 
-                   display={{ base: 'none', md: 'flex' }} 
-                   boxSize='70px' 
-                   src= '/logo.png'
-                   alt='owlLogo'
-            />
-            
-            
   
-            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+            <Flex display={{ base: 'none', md: 'flex' }} ml={3} mb={1}>
               <DesktopNav />
             </Flex>
           </Flex>
@@ -124,7 +123,7 @@ import {
               <PopoverTrigger>
                 <Link
                   p={2}
-                  href={navItem.href ?? '#'}
+                  href={navItem.href ? navItem.href : "#"}
                   fontSize={'sm'}
                   fontWeight={500}
                   color={linkColor}
