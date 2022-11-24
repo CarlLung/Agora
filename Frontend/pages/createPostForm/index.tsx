@@ -16,7 +16,8 @@ import {
   Textarea,
   useColorModeValue,
   VStack,
-  Text
+  Text,
+  Container
 } from '@chakra-ui/react';
 //import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from 'react-icons/bs';
 //import { MdEmail, MdOutlineEmail } from 'react-icons/md';
@@ -52,30 +53,50 @@ export default function CreatePostForm() {
     console.log(data);
   };
 
+  const backgroundImg = {
+    height: "100%",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundAttachment: 'fixed',
+    backgroundImage: "/images/bg.png",
+    gridArea: "1 / 1"
+    }   
+
   return (
     <ChakraProvider>
     <Head>
         <title>Create Post</title>
         <meta name="description" content="Create Post" />
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/images/logosq.png" />
       </Head>
-      <NavBar />
-
+      
       <form onSubmit={handleSubmit(onSubmit)}>
-    <Flex
-      bg={useColorModeValue('gray.100', 'gray.900')}
+
+    
+
+      <Box display="grid" >
+
+      <Box sx={backgroundImg}></Box>
+        
+      
+      <NavBar />
+     
+    
+      <Flex 
+      mt={20}
       align="center"
-      justify="center"
-      css={{
-        backgroundImage: useColorModeValue(CONFETTI_LIGHT, CONFETTI_DARK),
-        backgroundAttachment: 'fixed',
-      }}
-      id="contact">
-      <Box
+      justify="center" 
+      gridArea= "1 / 1">
+
+      <Box 
         borderRadius="lg"
         m={{ base: 5, md: 3, lg: 5 }}
-        p={{ base: 5, lg: 4 }}>
-        <Box>
+        p={{ base: 5, lg: 4 }}
+        
+        >
+        
+        <Box >
           <VStack spacing={{ base: 4, md: 8, lg: 9 }}>
 
             <Heading
@@ -92,7 +113,7 @@ export default function CreatePostForm() {
               
         
               <Box
-                bg={useColorModeValue('white', 'gray.700')}
+                bg={useColorModeValue('rgba(255,255,255,0.7)', 'gray.700')}
                 borderRadius="lg"
                 w="1000px"
                 p={{base: 10, md: 8, lg: 10} }
@@ -102,17 +123,26 @@ export default function CreatePostForm() {
                  
                   <FormControl>
                     <FormLabel><Text as="b">Post Title</Text></FormLabel>
-
+                    
                     <InputGroup>
                       
-                      <Input type="text" placeholder="Enter post title" {...register("title")}/>
+                      <Input type="text" 
+                             variant='outline'
+                             placeholder="Enter post title"
+                             _placeholder={{ background: 'rgba(226,232,240,0.6)' }}
+                             borderColor="rgba(0,0,0,0.3)"
+                             {...register("title")}/>
                     </InputGroup>
+                    
                   </FormControl>
 
                   <FormControl>
                     <FormLabel><Text as="b">Post Content</Text></FormLabel>
 
                     <Textarea
+                      variant='outline'
+                      _placeholder={{ background: 'rgba(226,232,240,0.6)' }}
+                      borderColor="rgba(0,0,0,0.3)"
                       placeholder="Enter your post content ..."
                       rows={10}
                       resize="none"
@@ -127,12 +157,14 @@ export default function CreatePostForm() {
                       
                       <Select
                           placeholder="Select option"
-                          variant="outline"
+                          variant='outline'                         
+                          _placeholder={{ background: 'rgba(226,232,240,0.6)' }}
+                          borderColor="rgba(0,0,0,0.2)"
                           icon={<TriangleDownIcon />}
                           {...register("tag")}>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
+                            <option style={{ background: 'rgba(226,232,240,0.6)' }} value="option1">Option 1</option>
+                            <option style={{ background: 'rgba(226,232,240,0.6)' }} value="option2">Option 2</option>
+                            <option style={{ background: 'rgba(226,232,240,0.6)' }} value="option3">Option 3</option>
                       </Select>
                     </InputGroup>
                   </FormControl>
@@ -158,9 +190,9 @@ export default function CreatePostForm() {
           </VStack>
         </Box>
       </Box>
-    </Flex>
-
-    </form>
+      </Flex>
+      </Box>
+      </form>
 
     </ChakraProvider>
   );

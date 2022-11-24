@@ -28,18 +28,21 @@ import {
     const { isOpen, onToggle } = useDisclosure();
   
     return (
-      <Box>
+      <Box gridArea= "1 / 1"  >
         <Flex
-          bg={useColorModeValue('white', 'gray.800')}
+          boxShadow='dark-lg' 
+          rounded='md'
+          ml={5}
+          mr={5}
+          mt={3}
+          borderRadius="lg"
+          bg={useColorModeValue('rgba(255,255,255,0.8)', 'rgba(0,0,0,0.25)')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           paddingLeft="6px"
           paddingTop="6px"
           paddingBottom="6px"
           paddingRight="15px"
-          borderBottom={1}
-          borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.900')}
           align={'center'}>
           <Flex
             flex={{ base: 1, md: 'auto' }}
@@ -58,7 +61,8 @@ import {
                    display={{ base: 'none', md: 'flex' }} 
                    width="135px"
                    height="45px"
-                   src= '/logo.png'
+                   borderRadius="md"
+                   src= '/images/logo.png'
                    alt='owlLogo'
             />
 
@@ -89,17 +93,19 @@ import {
               href={'#'}>
               Sign In
             </Button>
+            <Box boxShadow='2xl' rounded='md'>
             <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
               color={'white'}
-              bg={'pink.400'}
+              bgGradient='linear(to-r, blue.400, blue.600)'
               _hover={{
-                bg: 'pink.300',
+                bg: 'linear-gradient(90deg, rgba(74,200,236,1) 0%, rgba(74,167,236,1) 39%, rgba(74,118,236,1) 100%)'
               }}>
               Sign Up
             </Button>
+            </Box>
           </Stack>
         </Flex>
   
