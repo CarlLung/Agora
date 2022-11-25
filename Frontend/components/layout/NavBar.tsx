@@ -1,4 +1,5 @@
 import {
+    ChakraProvider,
     Box,
     Flex,
     Text,
@@ -23,11 +24,16 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
   // import Link from "next/link";
+  import Fonts from "../../components/layout/Fonts";
+  import theme from "../../styles/GlobalFont";
 
   export default function Navbar() {
+    
     const { isOpen, onToggle } = useDisclosure();
   
     return (
+      <ChakraProvider theme={theme}>
+      <Fonts />
       <Box gridArea= "1 / 1"  >
         <Flex
           boxShadow='dark-lg' 
@@ -75,7 +81,7 @@ import {
               Logo
             </Text> */}
   
-            <Flex display={{ base: 'none', md: 'flex' }} ml={3} mb={1}>
+            <Flex display={{ base: 'none', md: 'flex' }} ml={3}>
               <DesktopNav />
             </Flex>
           </Flex>
@@ -98,6 +104,8 @@ import {
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
+              h='35px'
+              w='100px'
               color={'white'}
               bgGradient='linear(to-r, blue.400, blue.600)'
               _hover={{
@@ -113,6 +121,7 @@ import {
           <MobileNav />
         </Collapse>
       </Box>
+      </ChakraProvider>
     );
   }
   
@@ -130,7 +139,7 @@ import {
                 <Link
                   p={2}
                   href={navItem.href ? navItem.href : "#"}
-                  fontSize={'sm'}
+                  fontSize={'md'}
                   fontWeight={500}
                   color={linkColor}
                   _hover={{
@@ -161,6 +170,7 @@ import {
         ))}
       </Stack>
     );
+   
   };
   
   const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
