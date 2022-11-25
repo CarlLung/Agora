@@ -2,13 +2,13 @@ import { Global } from '@emotion/react'
 
 const Fonts = () => (
     <Global
-      styles={`
+        styles={`
         @font-face {
           font-family: 'AnaphoraTrial';
           src: url('/AnaphoraTrial.ttf');
         }
         `}
     />
-  )
-  
-  export default Fonts
+)
+
+export default Fonts

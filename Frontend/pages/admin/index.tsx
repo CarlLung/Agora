@@ -1,7 +1,7 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from '@chakra-ui/react'
 
 const Admin = () => {
-  return <ChakraProvider>This is Admin Page</ChakraProvider>;
-};
+    return <ChakraProvider>This is Admin Page</ChakraProvider>
+}
 
-export default Admin;
+export default Admin
