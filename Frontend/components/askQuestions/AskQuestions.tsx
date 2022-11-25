@@ -1,4 +1,5 @@
 import {
+    ChakraProvider,
     Select,
     Box,
     Button,
@@ -16,6 +17,7 @@ import {
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Fonts from '../../components/layout/Fonts'
 import { TriangleDownIcon } from '@chakra-ui/icons'
+import theme from '../../styles/GlobalFont'
 
 type Post = { title: string; postContent: string; tag: string }
 
@@ -31,11 +33,13 @@ const AskQuestion = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Box display="grid">
+            
+           <ChakraProvider theme={theme}>
                 <Fonts />
+                <Box gridArea = "1 / 1">
+                <form onSubmit={handleSubmit(onSubmit)}>
 
-                <Flex mt={20} align="center" justify="center" gridArea="1 / 1">
+                <Flex mt={20} align="center" justify="center">
                     <Box
                         borderRadius="lg"
                         m={{ base: 5, md: 3, lg: 5 }}
@@ -184,8 +188,9 @@ const AskQuestion = () => {
                         </Box>
                     </Box>
                 </Flex>
+                </form>
             </Box>
-        </form>
+            </ChakraProvider>
     )
 }
 

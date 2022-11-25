@@ -1,6 +1,9 @@
-import { ChakraProvider, Button, Link, Box, Flex } from '@chakra-ui/react'
+import { ChakraProvider, Link, Box, Flex } from '@chakra-ui/react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import theme from '../../styles/GlobalFont'
+import Fonts from '../../components/layout/Fonts'
+import BlueButton from '../../components/layout/Buttons'
 
 const HomePage = () => {
     const [users, setUsers] = useState([])
@@ -35,22 +38,31 @@ const HomePage = () => {
             })
     }
     return (
-        <ChakraProvider>
-            <Box>
-                <Flex mt={4} justify="center">
+        <ChakraProvider theme={theme}>
+            <Fonts />
+            <Box gridArea = "1 / 1">
+                <Flex mt={20} justify="center">
                     <Link href="./createPostForm">
-                        <Button colorScheme="teal" size="lg">
-                            Create Post
-                        </Button>
+                        <BlueButton 
+                           buttonText={"Create User"}
+                           fontSize={"md"}
+                           fontWeight={"500"}
+                           h={"40px"}
+                           w={"130px"}
+                          
+                           />
                     </Link>
-                    <Button
-                        onClick={handleCreateUser}
-                        colorScheme="teal"
-                        size="lg"
-                        marginLeft={2}
-                    >
-                        Create User
-                    </Button>
+
+                    <BlueButton 
+                           buttonText={"Create User"}
+                           onClick={handleCreateUser}
+                           fontSize={"md"}
+                           fontWeight={"500"}
+                           h={"40px"}
+                           w={"130px"} 
+                           marginLeft={"10px"}
+                           />
+                    
                 </Flex>
             </Box>
         </ChakraProvider>

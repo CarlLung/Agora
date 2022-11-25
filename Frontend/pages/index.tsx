@@ -3,7 +3,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import HomePage from './home'
 import NavBar from '../components/layout/NavBar'
 // import Link from "next/link";
-import Layout from '../components/layout/Layout'
+import Layout, { BgImg } from '../components/layout/Layout'
+
 
 export default function Home() {
     return (
@@ -21,6 +22,7 @@ export default function Home() {
                 />
             </Head>
             <Layout>
+                <BgImg />
                 <NavBar />
 
                 {/* <Link href="/admin">Admin</Link> */}

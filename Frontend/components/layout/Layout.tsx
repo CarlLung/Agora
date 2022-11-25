@@ -1,4 +1,5 @@
-import { Box } from '@chakra-ui/react'
+import { Box } 
+         from '@chakra-ui/react'
 
 type Props = {
     children: React.ReactNode
@@ -6,7 +7,7 @@ type Props = {
 
 const backgroundImg = {
     height: '100%',
-    minHeight: '100vh',
+    minH: '100vh',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
@@ -17,9 +18,15 @@ const backgroundImg = {
 
 const Layout = ({ children }: Props) => {
     return (
-        <Box sx={backgroundImg}>
-            <main>{children}</main>
+        <Box display="grid">
+            {children}
         </Box>
+    )
+}
+
+export function BgImg () {
+    return (
+        <Box sx={backgroundImg}></Box>
     )
 }
 

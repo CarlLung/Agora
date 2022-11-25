@@ -13,7 +13,6 @@ import {
     PopoverTrigger,
     PopoverContent,
     useColorModeValue,
-    useBreakpointValue,
     useDisclosure,
     Image,
 } from '@chakra-ui/react'
@@ -26,6 +25,7 @@ import {
 // import Link from "next/link";
 import Fonts from '../../components/layout/Fonts'
 import theme from '../../styles/GlobalFont'
+import BlueButton from '../../components/layout/Buttons'
 
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure()
@@ -33,7 +33,7 @@ export default function Navbar() {
     return (
         <ChakraProvider theme={theme}>
             <Fonts />
-            <Box gridArea="1 / 1">
+            <Box gridArea= "1 / 1" z-index="999" position="relative">
                 <Flex
                     boxShadow="dark-lg"
                     rounded="md"
@@ -112,20 +112,15 @@ export default function Navbar() {
                             Sign In
                         </Button>
                         <Box boxShadow="2xl" rounded="md">
-                            <Button
-                                display={{ base: 'none', md: 'inline-flex' }}
-                                fontSize={'sm'}
-                                fontWeight={600}
-                                h="35px"
-                                w="100px"
-                                color={'white'}
-                                bgGradient="linear(to-r, blue.400, blue.600)"
-                                _hover={{
-                                    bg: 'linear-gradient(90deg, rgba(74,200,236,1) 0%, rgba(74,167,236,1) 39%, rgba(74,118,236,1) 100%)',
-                                }}
-                            >
-                                Sign Up
-                            </Button>
+
+                           <BlueButton 
+                           buttonText={"Sign Up"}
+                           fontSize={"sm"}
+                           fontWeight={"600"}
+                           h={"35px"}
+                           w={"100px"} 
+                           />
+                            
                         </Box>
                     </Stack>
                 </Flex>
