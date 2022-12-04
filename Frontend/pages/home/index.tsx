@@ -44,7 +44,7 @@ const HomePage = () => {
                 <Flex mt={20} justify="center">
                     <Link href="./createPostForm">
                         <BlueButton 
-                           buttonText={"Create User"}
+                           buttonText={"Post Questions"}
                            fontSize={"md"}
                            fontWeight={"500"}
                            h={"40px"}

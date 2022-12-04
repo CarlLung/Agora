@@ -18,6 +18,8 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import Fonts from '../../components/layout/Fonts'
 import { TriangleDownIcon } from '@chakra-ui/icons'
 import theme from '../../styles/GlobalFont'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 
 type Post = { title: string; postContent: string; tag: string }
 
@@ -28,8 +30,37 @@ const AskQuestion = () => {
         formState: { errors },
     } = useForm<Post>()
 
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        axios
+            .get('http://localhost:8080/posts')
+            .then(function (response) {
+                // handle success
+                setPosts(response.data)
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error)
+            })
+            .finally(function () {
+                // always executed
+            })
+    }, [])
+
     const onSubmit: SubmitHandler<Post> = (data) => {
-        console.log(data)
+        axios
+        .post('http://localhost:8080/posts', {
+            title: data.title,
+            postContent: data.postContent,
+            tag: data.tag
+        })
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
     }
 
     return (
