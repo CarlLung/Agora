@@ -4,8 +4,9 @@ const Fonts = () => (
     <Global
         styles={`
         @font-face {
-          font-family: 'AnaphoraTrial';
-          src: url('/AnaphoraTrial.ttf');
+          font-family: 'MateRegular';
+          src: url('/MateRegular.ttf');
+          format: 'ttf';
         }
         `}
     />
