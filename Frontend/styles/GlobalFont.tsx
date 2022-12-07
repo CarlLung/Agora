@@ -7,11 +7,11 @@ const theme = extendTheme({
         global: {
             // styles for the `body`
             body: {
-                fontFamily: `'AnaphoraTrial', sans-serif`,
+                fontFamily: `'MateRegular', serif`,
             },
             // styles for the `heading`
             heading: {
-                fontFamily: `'AnaphoraTrial', sans-serif`,
+                fontFamily: `'MateRegular', serif`,
             },
             // styles for the `a`
         },
