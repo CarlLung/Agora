@@ -33,7 +33,7 @@ export default function Navbar() {
     return (
         <ChakraProvider theme={theme}>
             <Fonts />
-            <Box gridArea= "1 / 1" z-index="999" position="relative">
+            <Box gridArea="1 / 1" z-index="999" position="relative">
                 <Flex
                     boxShadow="dark-lg"
                     rounded="md"
@@ -112,15 +112,13 @@ export default function Navbar() {
                             Sign In
                         </Button>
                         <Box boxShadow="2xl" rounded="md">
-
-                           <BlueButton 
-                           buttonText={"Sign Up"}
-                           fontSize={"sm"}
-                           fontWeight={"600"}
-                           h={"35px"}
-                           w={"100px"} 
-                           />
-                            
+                            <BlueButton
+                                buttonText={'Sign Up'}
+                                fontSize={'sm'}
+                                fontWeight={'600'}
+                                h={'35px'}
+                                w={'100px'}
+                            />
                         </Box>
                     </Stack>
                 </Flex>
