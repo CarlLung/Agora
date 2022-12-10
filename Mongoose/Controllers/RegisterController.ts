@@ -1,14 +1,14 @@
 import { BaseController } from '../base-controller'
-import { UserService } from '../Services/UsersService'
+import { RegisterService } from '../Services/RegisterService'
 import { HttpException } from '../base-controller'
 
-export class UserController extends BaseController {
-    constructor(public usersService: UserService) {
+export class RegisterController extends BaseController {
+    constructor(public registerService: RegisterService) {
         super()
     }
 
-    getUsers = this.handleRequest(async (req, res) => {
-        return await this.usersService.getUsers()
+    getUserProfile = this.handleRequest(async (req, res) => {
+        return await this.registerService.getUserProfile()
     })
 
     createUser = this.handleRequest(async (req, res) => {
@@ -18,6 +18,6 @@ export class UserController extends BaseController {
             throw new HttpException(400, 'Email and password are required')
         }
 
-        return await this.usersService.createUser({ username, email, password })
+        return await this.registerService.createUser({ username, email, password })
     })
 }
