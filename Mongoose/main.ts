@@ -20,24 +20,21 @@ mongoose.connect(mongoDB, {}, () => {
 
 const db = mongoose.connection
 
-import { UserService } from './Services/UsersService'
 import { PostService } from './Services/PostsService'
 import { RegisterService } from './Services/RegisterService'
-import { UserController } from './Controllers/UsersController'
+
 import { PostController } from './Controllers/PostsController'
 import { RegisterController } from './Controllers/RegisterController'
 
-const userService = new UserService()
-const userController = new UserController(userService)
 const postService = new PostService()
 const postController = new PostController(postService)
+
 const registerService = new RegisterService()
 const registerController = new RegisterController(registerService)
 
 let router = routes({
-    userController,
     postController,
-    registerController
+    registerController,
 })
 
 app.use(router)

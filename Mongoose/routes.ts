@@ -1,15 +1,13 @@
 import express from 'express'
 
-import { UserController } from './Controllers/UsersController'
 import { PostController } from './Controllers/PostsController'
 import { RegisterController } from './Controllers/RegisterController'
 
-export default function (args: { userController: UserController, postController: PostController, registerController: RegisterController }) {
+export default function (args: {
+    postController: PostController
+    registerController: RegisterController
+}) {
     let router = express.Router()
-
-    router.get('/users', args.userController.getUsers)
-
-    router.post('/users', args.userController.createUser)
 
     router.get('/posts', args.postController.getPosts)
 
@@ -18,6 +16,8 @@ export default function (args: { userController: UserController, postController:
     router.get('/register', args.registerController.getUserProfile)
 
     router.post('/register', args.registerController.createUser)
+
+    router.post('/login', args.registerController.localLogin)
 
     return router
 }
