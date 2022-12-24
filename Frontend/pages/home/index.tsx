@@ -1,21 +1,9 @@
 import { ChakraProvider, Link, Box, Flex } from '@chakra-ui/react'
-import axios from 'axios'
 import theme from '../../styles/GlobalFont'
 import Fonts from '../../components/layout/Fonts'
 import BlueButton from '../../components/layout/Buttons'
-import { useQuery } from 'react-query'
-
-type User = {
-    email: string
-    password: string
-}
 
 const HomePage = () => {
-    const users = useQuery('users', async () => {
-        const { data } = await axios.get('http://localhost:8080/users')
-        return data.data
-    })
-
     return (
         <ChakraProvider theme={theme}>
             <Fonts />
@@ -31,26 +19,6 @@ const HomePage = () => {
                         />
                     </Link>
                 </Flex>
-
-                <>
-                    {users.isError ? (
-                        'fucking error'
-                    ) : (
-                        <>
-                            {users.isLoading ? (
-                                <div>is loading</div>
-                            ) : (
-                                <div>
-                                    {users.data.map(
-                                        (user: User, key: number) => (
-                                            <div key={key}>{user.email}</div>
-                                        )
-                                    )}
-                                </div>
-                            )}
-                        </>
-                    )}
-                </>
             </Box>
         </ChakraProvider>
     )
