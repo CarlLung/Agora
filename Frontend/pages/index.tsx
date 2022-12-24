@@ -3,6 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import HomePage from './home'
 import NavBar from '../components/layout/NavBar'
 import Layout, { BgImg } from '../components/layout/Layout'
+import React from 'react'
 
 export default function Home() {
     return (

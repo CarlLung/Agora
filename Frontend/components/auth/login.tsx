@@ -1,6 +1,5 @@
 import {
     ChakraProvider,
-    Select,
     Box,
     Button,
     Flex,
@@ -15,18 +14,21 @@ import {
 } from '@chakra-ui/react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Fonts from '../../components/layout/Fonts'
-import { TriangleDownIcon } from '@chakra-ui/icons'
 import theme from '../../styles/GlobalFont'
-import axios from 'axios'
+import { localLogin } from '../../redux/reducers/authReducer'
+import { RootState } from '../../redux/store'
+import { useAppSelector, useAppDispatch } from '../../redux/hook'
 
 type UserProfile = {
-    username: string
-    email: string
+    usernameOrEmail: string
     password: string
-    passwordConfirm: string
 }
 
 const LoginForm = () => {
+    const dispatch = useAppDispatch()
+    const user = useAppSelector((state: RootState) => state.auth)
+    console.log(user)
+
     const {
         register,
         handleSubmit,
@@ -34,18 +36,7 @@ const LoginForm = () => {
     } = useForm<UserProfile>()
 
     const onSubmit: SubmitHandler<UserProfile> = (data) => {
-        axios
-            .post('http://localhost:8080/register', {
-                username: data.username,
-                email: data.email,
-                password: data.password,
-            })
-            .then(function (response) {
-                console.log(response)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+        dispatch(localLogin(data))
     }
 
     return (
@@ -68,7 +59,7 @@ const LoginForm = () => {
                                         }}
                                         fontWeight="900"
                                     >
-                                        Login
+                                        Register Now
                                     </Text>
 
                                     <Stack
@@ -104,7 +95,7 @@ const LoginForm = () => {
                                                         <Input
                                                             type="text"
                                                             variant="outline"
-                                                            placeholder="Enter Username"
+                                                            placeholder="Enter Username/ Email"
                                                             _placeholder={{
                                                                 background:
                                                                     'rgba(226,232,240,0.6)',
@@ -112,7 +103,7 @@ const LoginForm = () => {
                                                             borderColor="rgba(0,0,0,0.3)"
                                                             errorBorderColor="red.300"
                                                             {...register(
-                                                                'username',
+                                                                'usernameOrEmail',
                                                                 {
                                                                     required:
                                                                         true,
@@ -124,44 +115,8 @@ const LoginForm = () => {
                                                         color="red.300"
                                                         fontSize="14px"
                                                     >
-                                                        {errors.username &&
+                                                        {errors.usernameOrEmail &&
                                                             'Username is required'}
-                                                    </Text>
-                                                </FormControl>
-
-                                                <FormControl>
-                                                    <FormLabel>
-                                                        <Text as="b">
-                                                            Email
-                                                        </Text>
-                                                    </FormLabel>
-
-                                                    <InputGroup>
-                                                        <Input
-                                                            type="email"
-                                                            variant="outline"
-                                                            placeholder="Enter Email"
-                                                            _placeholder={{
-                                                                background:
-                                                                    'rgba(226,232,240,0.6)',
-                                                            }}
-                                                            borderColor="rgba(0,0,0,0.3)"
-                                                            errorBorderColor="red.300"
-                                                            {...register(
-                                                                'email',
-                                                                {
-                                                                    required:
-                                                                        true,
-                                                                }
-                                                            )}
-                                                        />
-                                                    </InputGroup>
-                                                    <Text
-                                                        color="red.300"
-                                                        fontSize="14px"
-                                                    >
-                                                        {errors.email &&
-                                                            'Email is required'}
                                                     </Text>
                                                 </FormControl>
 
@@ -198,42 +153,6 @@ const LoginForm = () => {
                                                     >
                                                         {errors.password &&
                                                             'Password is required'}
-                                                    </Text>
-                                                </FormControl>
-
-                                                <FormControl>
-                                                    <FormLabel>
-                                                        <Text as="b">
-                                                            Confirm Password
-                                                        </Text>
-                                                    </FormLabel>
-
-                                                    <InputGroup>
-                                                        <Input
-                                                            type="password"
-                                                            variant="outline"
-                                                            placeholder="Confirm Password"
-                                                            _placeholder={{
-                                                                background:
-                                                                    'rgba(226,232,240,0.6)',
-                                                            }}
-                                                            errorBorderColor="red.300"
-                                                            borderColor="rgba(0,0,0,0.3)"
-                                                            {...register(
-                                                                'passwordConfirm',
-                                                                {
-                                                                    required:
-                                                                        true,
-                                                                }
-                                                            )}
-                                                        />
-                                                    </InputGroup>
-                                                    <Text
-                                                        color="red.300"
-                                                        fontSize="14px"
-                                                    >
-                                                        {errors.passwordConfirm &&
-                                                            'Please Confirm Password'}
                                                     </Text>
                                                 </FormControl>
 
