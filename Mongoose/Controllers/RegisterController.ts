@@ -38,9 +38,9 @@ export class RegisterController extends BaseController {
             password,
         })
 
-        if (!user) {
-            throw new HttpException(400, 'Invalid username or password')
-        }
+        // if (!user) {
+        //     throw new HttpException(400, 'Invalid username or password')
+        // }
 
         return user
     })

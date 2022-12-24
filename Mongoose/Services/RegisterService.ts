@@ -4,7 +4,7 @@ import { hashPassword } from '../lib/hash'
 import { HttpException } from '../base-controller'
 // import jwtSimple from 'jwt-simple'
 import jwt from '../lib/jwt'
-// import { checkPassword } from '../lib/hash'
+import { checkPassword } from '../lib/hash'
 // import { JWTPayload } from '../interface/models'
 
 export class RegisterService {
@@ -36,25 +36,27 @@ export class RegisterService {
             )
         }
 
-        const loginWithUsername = await User.find({
-            where: {
-                OR: [
-                    {
-                        username: usernameOrEmail,
-                    },
-                    {
-                        email: usernameOrEmail,
-                    },
-                ],
-            },
-            select: {
-                id: true,
-                username: true,
-                email: true,
-                hashedPassword: true,
-            },
+        const user = await User.findOne({
+            $or: [
+                {
+                    username: usernameOrEmail,
+                },
+                {
+                    email: usernameOrEmail,
+                },
+            ],
         })
 
-        return loginWithUsername
+        if (!user) {
+            throw new HttpException(400, 'Invalid username or password')
+        }
+
+        const isPasswordValid = await checkPassword(password, user.password)
+
+        if (!isPasswordValid) {
+            throw new HttpException(400, 'Invalid username or password')
+        }
+
+        return user
     }
 }

@@ -12,9 +12,9 @@ const postSchema = new mongoose.Schema({
     tag: {
         type: String,
         required: true,
-    }
+    },
 })
 
-const Post = mongoose.model('Post', postSchema)
+const Post = mongoose.model('post', postSchema)
 
 export { Post }
