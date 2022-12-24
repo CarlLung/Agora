@@ -16,19 +16,6 @@ const HomePage = () => {
         return data.data
     })
 
-    const handleCreateUser = () => {
-        axios
-            .post('http://localhost:8080/users', {
-                email: 'byeYOurHead@bye.com',
-                password: '1234997',
-            })
-            .then(function (response) {
-                console.log(response)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-    }
     return (
         <ChakraProvider theme={theme}>
             <Fonts />
@@ -43,16 +30,6 @@ const HomePage = () => {
                             w={'130px'}
                         />
                     </Link>
-
-                    <BlueButton
-                        buttonText={'Create User'}
-                        onClick={handleCreateUser}
-                        fontSize={'md'}
-                        fontWeight={'500'}
-                        h={'40px'}
-                        w={'130px'}
-                        marginLeft={'10px'}
-                    />
                 </Flex>
 
                 <>
