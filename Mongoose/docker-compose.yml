@@ -1,6 +1,6 @@
 services:
   backend:
     build: .
-    image: express-server
+    image: mongoose-server
     ports:
       - "8080:8080"

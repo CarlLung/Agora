@@ -1,10 +1,8 @@
 FROM node:19
 
-WORKDIR /BACKEND
+WORKDIR /MONGOOSE
 
 COPY package*.json ./
-
-COPY prisma ./prisma/
 
 COPY .env ./
 
