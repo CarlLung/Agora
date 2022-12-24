@@ -4,3 +4,6 @@ services:
     image: mongoose-server
     ports:
       - "8080:8080"
+
+# make sure build the docker image by running
+# docker build -t mongoose-server .
