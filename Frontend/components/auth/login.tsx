@@ -16,8 +16,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import Fonts from '../../components/layout/Fonts'
 import theme from '../../styles/GlobalFont'
 import { localLogin } from '../../redux/reducers/authReducer'
-import { RootState } from '../../redux/store'
-import { useAppSelector, useAppDispatch } from '../../redux/hook'
+import { useAppDispatch } from '../../redux/hook'
 
 type UserProfile = {
     usernameOrEmail: string
@@ -26,8 +25,6 @@ type UserProfile = {
 
 const LoginForm = () => {
     const dispatch = useAppDispatch()
-    const user = useAppSelector((state: RootState) => state.auth)
-    console.log(user)
 
     const {
         register,
