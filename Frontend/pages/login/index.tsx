@@ -4,9 +4,9 @@ import { ChakraProvider } from '@chakra-ui/react'
 import theme from '../../styles/GlobalFont'
 import Layout, { BgImg } from '../../components/layout/Layout'
 import NavBar from '../../components/layout/NavBar'
-import CreatePostForm from '../../components/Form/CreatePostForm'
+import LoginForm from '../../components/auth/login'
 
-export default function Login() {
+export default function LoginPage() {
     return (
         <ChakraProvider theme={theme}>
             <Head>
@@ -18,7 +18,7 @@ export default function Login() {
             <Layout>
                 <BgImg />
                 <NavBar />
-                <CreatePostForm />
+                <LoginForm />
             </Layout>
         </ChakraProvider>
     )

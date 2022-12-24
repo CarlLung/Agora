@@ -22,7 +22,6 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
 } from '@chakra-ui/icons'
-// import Link from "next/link";
 import Fonts from '../../components/layout/Fonts'
 import theme from '../../styles/GlobalFont'
 import BlueButton from '../../components/layout/Buttons'
@@ -107,10 +106,11 @@ export default function Navbar() {
                             fontSize={'sm'}
                             fontWeight={400}
                             variant={'link'}
-                            href={'#'}
+                            href={'/login'}
                         >
                             Sign In
                         </Button>
+
                         <Box boxShadow="2xl" rounded="md">
                             <BlueButton
                                 buttonText={'Sign Up'}
@@ -118,6 +118,7 @@ export default function Navbar() {
                                 fontWeight={'600'}
                                 h={'35px'}
                                 w={'100px'}
+                                href={'/register'}
                             />
                         </Box>
                     </Stack>

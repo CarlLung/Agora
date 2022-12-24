@@ -6,8 +6,9 @@ type Props = {
     h: string
     w: string
     fontWeight?: string
-    onClick?: React.MouseEventHandler<HTMLButtonElement>
     marginLeft?: string
+    href?: string
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export default function BlueButton({
@@ -18,7 +19,7 @@ export default function BlueButton({
     fontWeight,
     onClick,
     marginLeft,
-    ...rest
+    href,
 }: Props) {
     return (
         <Button
@@ -38,7 +39,8 @@ export default function BlueButton({
                 //bg: 'linear-gradient(90deg, rgba(74,200,236,1) 0%, rgba(74,167,236,1) 39%, rgba(74,118,236,1) 100%)'
                 bg: 'linear-gradient(90deg, rgba(39,124,186,1) 0%, rgba(52,78,219,1) 50%, rgba(103,41,218,1) 100%)',
             }}
-            {...rest}
+            {...(href && { as: 'a' })}
+            {...(href && { href })}
         >
             {buttonText}
         </Button>

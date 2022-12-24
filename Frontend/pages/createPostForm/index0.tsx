@@ -11,7 +11,7 @@ import {
 import { TriangleDownIcon } from '@chakra-ui/icons'
 import NavBar from '../../components/layout/NavBar'
 
-export default function createPostForm() {
+export default function CreatePostForm() {
     type Post = { title: string; mainContent: string; tag: string }
 
     const {
