@@ -2,10 +2,10 @@ import { User as IUser, localLogin } from '../interface/user'
 import { User } from '../models/userSchema'
 import { hashPassword } from '../lib/hash'
 import { HttpException } from '../base-controller'
-// import jwtSimple from 'jwt-simple'
+import jwtSimple from 'jwt-simple'
 import jwt from '../lib/jwt'
 import { checkPassword } from '../lib/hash'
-// import { JWTPayload } from '../interface/models'
+import { JWTPayload } from '../interface/models'
 
 export class RegisterService {
     constructor() {}
@@ -57,6 +57,14 @@ export class RegisterService {
             throw new HttpException(400, 'Invalid username or password')
         }
 
-        return user
+        let payload: JWTPayload = {
+            user_id: user.id,
+            username: user.username,
+            email: user.email,
+        }
+
+        let token = jwtSimple.encode(payload, jwt.jwtSecret)
+
+        return { jwt_token: token }
     }
 }

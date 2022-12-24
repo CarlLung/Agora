@@ -10,6 +10,7 @@ declare global {
 export type JWTPayload = {
     user_id: number
     username: string
+    email: string
 }
 
 export type NativeLoginInput = {
