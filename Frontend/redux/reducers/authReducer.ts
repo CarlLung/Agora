@@ -39,10 +39,11 @@ export const localLogin = createAsyncThunk(
     'auth/localLogin',
     async (input: LoginInput) => {
         const { usernameOrEmail, password } = input
+        if (!usernameOrEmail || !password) return store.dispatch(logout())
 
         try {
             await axios
-                .post('http://localhost:8080/login', {
+                .post(`${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/login`, {
                     usernameOrEmail,
                     password,
                 })
