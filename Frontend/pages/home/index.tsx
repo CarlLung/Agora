@@ -2,8 +2,11 @@ import { ChakraProvider, Link, Box, Flex } from '@chakra-ui/react'
 import theme from '../../styles/GlobalFont'
 import Fonts from '../../components/layout/Fonts'
 import BlueButton from '../../components/layout/Buttons'
+import useUser from '../../redux/hook/useUser'
 
 const HomePage = () => {
+    const { user } = useUser()
+    console.log(user)
     return (
         <ChakraProvider theme={theme}>
             <Fonts />

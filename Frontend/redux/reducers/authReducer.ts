@@ -1,12 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { store } from '../store'
 import axios from 'axios'
+import { camelizeKeys } from 'humps'
 
 export interface User {
-    id: string
-    username: string
-    email: string
-    token: string
+    jwtToken: string
 }
 
 export interface LoginInput {
@@ -48,23 +46,51 @@ export const localLogin = createAsyncThunk(
                     password,
                 })
                 .then((res) => {
+                    return camelizeKeys(res.data.data)
+                })
+                .then((data) => {
+                    alert('Login success')
+                    localStorage.setItem('token', data.jwtToken)
                     return store.dispatch(
                         login({
-                            ...res.data.data,
+                            ...data,
                         })
                     )
                 })
-                .catch(() => {
+                .catch((err) => {
+                    console.error(err)
                     return store.dispatch(logout())
                 })
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 )
 
-export const localLoginThunk = async (input: LoginInput) =>
-    await store.dispatch(localLogin(input))
+export const handleTokenValidation = createAsyncThunk(
+    'auth/handleTokenValidation',
+    async () => {
+        const token = localStorage.getItem('token')
+        if (!token) return store.dispatch(logout())
+
+        try {
+            await axios
+                .get(`${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/check`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            'token'
+                        )}`,
+                    },
+                })
+                .catch(() => {
+                    localStorage.removeItem('token')
+                    return store.dispatch(logout())
+                })
+        } catch (err) {
+            console.error(err)
+        }
+    }
+)
 
 export const { login, logout } = authSlice.actions
 
