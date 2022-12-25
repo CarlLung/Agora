@@ -20,9 +20,12 @@ export default function (args: {
         args.registerController.getUserProfile
     )
 
+    // user route
     router.post('/register', args.registerController.createUser)
 
     router.post('/login', args.registerController.localLogin)
+
+    router.get('/check', requireLogin, args.registerController.userValidation)
 
     return router
 }
