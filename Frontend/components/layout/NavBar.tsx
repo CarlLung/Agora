@@ -118,7 +118,7 @@ export default function Navbar() {
                                 fontWeight={'600'}
                                 h={'35px'}
                                 w={'100px'}
-                                href={'/register'}
+                                href={'./register'}
                             />
                         </Box>
                     </Stack>

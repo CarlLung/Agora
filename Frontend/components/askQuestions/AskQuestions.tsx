@@ -121,7 +121,7 @@ const AskQuestion = () => {
                                                         placeholder="Enter post title"
                                                         _placeholder={{
                                                             background:
-                                                                'rgba(226,232,240,0.6)',
+                                                                'transparent',
                                                         }}
                                                         borderColor="rgba(0,0,0,0.3)"
                                                         {...register('title')}
@@ -140,7 +140,7 @@ const AskQuestion = () => {
                                                     variant="outline"
                                                     _placeholder={{
                                                         background:
-                                                            'rgba(226,232,240,0.6)',
+                                                            'transparent',
                                                     }}
                                                     borderColor="rgba(0,0,0,0.3)"
                                                     placeholder="Enter your post content ..."

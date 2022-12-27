@@ -25,6 +25,8 @@ export default function (args: {
 
     router.post('/login', args.registerController.localLogin)
 
+    router.post('/login', requireLogin, args.registerController.localLogin)
+
     router.get('/check', requireLogin, args.registerController.userValidation)
 
     return router

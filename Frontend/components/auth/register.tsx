@@ -1,6 +1,5 @@
 import {
     ChakraProvider,
-    Select,
     Box,
     Button,
     Flex,
@@ -107,7 +106,7 @@ const RegisterForm = () => {
                                                             placeholder="Enter Username"
                                                             _placeholder={{
                                                                 background:
-                                                                    'rgba(226,232,240,0.6)',
+                                                                'transparent',
                                                             }}
                                                             borderColor="rgba(0,0,0,0.3)"
                                                             errorBorderColor="red.300"
@@ -143,7 +142,7 @@ const RegisterForm = () => {
                                                             placeholder="Enter Email"
                                                             _placeholder={{
                                                                 background:
-                                                                    'rgba(226,232,240,0.6)',
+                                                                'transparent',
                                                             }}
                                                             borderColor="rgba(0,0,0,0.3)"
                                                             errorBorderColor="red.300"
@@ -179,7 +178,7 @@ const RegisterForm = () => {
                                                             placeholder="Enter Password"
                                                             _placeholder={{
                                                                 background:
-                                                                    'rgba(226,232,240,0.6)',
+                                                                'transparent',
                                                             }}
                                                             borderColor="rgba(0,0,0,0.3)"
                                                             errorBorderColor="red.300"
@@ -215,7 +214,7 @@ const RegisterForm = () => {
                                                             placeholder="Confirm Password"
                                                             _placeholder={{
                                                                 background:
-                                                                    'rgba(226,232,240,0.6)',
+                                                                    'transparent',
                                                             }}
                                                             errorBorderColor="red.300"
                                                             borderColor="rgba(0,0,0,0.3)"

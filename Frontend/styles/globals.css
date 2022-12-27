@@ -15,3 +15,24 @@ a {
 * {
     box-sizing: border-box;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    
+    background: "transparent"; /* Firefox */
+  }
+
+::-webkit-input-placeholder { 
+   
+    background: "transparent";
+ }
+ :-moz-placeholder { 
+  
+    background: "transparent";
+ }
+ ::-moz-placeholder { 
+    
+    background: "transparent";
+ }
+ :-ms-input-placeholder { 
+    background: "transparent"
+ }

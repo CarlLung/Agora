@@ -56,7 +56,7 @@ const LoginForm = () => {
                                         }}
                                         fontWeight="900"
                                     >
-                                        Register Now
+                                        Login
                                     </Text>
 
                                     <Stack
@@ -95,7 +95,7 @@ const LoginForm = () => {
                                                             placeholder="Enter Username/ Email"
                                                             _placeholder={{
                                                                 background:
-                                                                    'rgba(226,232,240,0.6)',
+                                                                'transparent',
                                                             }}
                                                             borderColor="rgba(0,0,0,0.3)"
                                                             errorBorderColor="red.300"
@@ -131,7 +131,7 @@ const LoginForm = () => {
                                                             placeholder="Enter Password"
                                                             _placeholder={{
                                                                 background:
-                                                                    'rgba(226,232,240,0.6)',
+                                                                'transparent',
                                                             }}
                                                             borderColor="rgba(0,0,0,0.3)"
                                                             errorBorderColor="red.300"
@@ -163,7 +163,7 @@ const LoginForm = () => {
                                                     }}
                                                     width="60%"
                                                 >
-                                                    Register
+                                                    Login
                                                 </Button>
                                             </VStack>
                                         </Box>

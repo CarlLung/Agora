@@ -14,6 +14,11 @@ const theme = extendTheme({
                 fontFamily: `'MateRegular', serif`,
             },
             // styles for the `a`
+            _placeholder: {
+                background: "rgba(51, 170, 51, .4)"
+                
+                
+            }
         },
     },
 })

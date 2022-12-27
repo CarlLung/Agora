@@ -24,6 +24,8 @@ export class RegisterController extends BaseController {
             email,
             password,
         })
+        
+    
     })
 
     localLogin = this.handleRequest(async (req, res) => {
