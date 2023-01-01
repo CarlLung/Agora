@@ -13,6 +13,9 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    comment: {
+        type: Array,
+    },
 })
 
 const Post = mongoose.model('post', postSchema)
