@@ -1,6 +1,7 @@
 import { Post as IPost } from '../interface/post'
 import { Post } from '../models/postSchema'
 
+
 export class PostService {
     constructor() {}
 
@@ -15,4 +16,6 @@ export class PostService {
         }
         return 'post created'
     }
+
 }
+

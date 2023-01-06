@@ -1,18 +1,24 @@
 import express from 'express'
 
 import { PostController } from './Controllers/PostsController'
+import { CommentController } from './Controllers/CommentsController'
 import { RegisterController } from './Controllers/RegisterController'
 import { requireLogin } from './lib/guard'
 
 export default function (args: {
     postController: PostController
     registerController: RegisterController
+    commentController: CommentController
 }) {
     let router = express.Router()
 
     router.get('/posts', args.postController.getPosts)
 
     router.post('/posts', requireLogin, args.postController.createPost)
+
+    router.get('/comments', args.commentController.getComments)
+
+    router.post('/comments', requireLogin, args.commentController.createComment)
 
     router.get(
         '/register',

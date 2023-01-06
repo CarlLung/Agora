@@ -20,4 +20,5 @@ export class PostController extends BaseController {
 
         return await this.postsService.createPost({ title, postContent, tag })
     })
+
 }
